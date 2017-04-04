@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:1.0.1
+FROM tensorflow/tensorflow:1.1.0-rc1
 
 ENV DATA_DIR=/var/tensorflow/
 
