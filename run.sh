@@ -18,13 +18,13 @@ echo "JOB_NAME: ${JOB_NAME}"
 
 echo "-------------------------------------------"
 
-if [ "$PS" == 1 ]; then
+if [ "$JOB_NAME" == "ps" ]; then
 
     echo "Starting Tensorflow parameters server"
 
     python /mnist.py --job_name ps --input_data_dir "${DATA_DIR}input_data" --log_dir "${DATA_DIR}logs/fully_connected_feed"
 
-elif [ "$WORKER" == 1 ]; then
+elif [ "$JOB_NAME" == "worker" ]; then
 
     if [ -z "$TASK_ID" ]; then
         TASK_ID=0
@@ -35,7 +35,4 @@ elif [ "$WORKER" == 1 ]; then
     python /mnist.py --job_name worker --task_index "$TASK_ID"  --input_data_dir "${DATA_DIR}input_data" --log_dir "${DATA_DIR}logs/fully_connected_feed"
 
 fi
-
-
-
 
